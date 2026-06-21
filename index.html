@@ -42,12 +42,11 @@ body{
     color:#0f4c81;
     font-size:32px;
     line-height:1.4;
-    margin-bottom:10px;
 }
 
 .subjudul{
     color:#555;
-    font-size:18px;
+    margin-top:10px;
     margin-bottom:20px;
 }
 
@@ -118,33 +117,17 @@ button:hover{
     color:#666;
     font-size:14px;
 }
-
-@media(max-width:600px){
-    .container{
-        padding:20px;
-    }
-
-    .judul{
-        font-size:24px;
-    }
-
-    .subjudul{
-        font-size:15px;
-    }
-}
 </style>
 </head>
 <body>
 
 <div class="container">
 
-<!-- Ganti dengan logo sekolah -->
 <img src="logosmk.png" class="logo" alt="Logo Sekolah">
 
 <h1 class="judul">
 PENGUMUMAN<br>
-SELEKSI PENERIMAAN<br>
-MURID BARU (SPMB)
+SELEKSI PENERIMAAN MURID BARU (SPMB)
 </h1>
 
 <h2 class="subjudul">
@@ -156,14 +139,9 @@ Tahun Pelajaran 2026/2027
 Masukkan nama siswa untuk melihat hasil pengumuman.
 </div>
 
-<input
-type="text"
-id="nama"
-placeholder="Masukkan nama siswa">
+<input type="text" id="nama" placeholder="Masukkan nama siswa">
 
-<button onclick="cekHasil()">
-🔍 Cari Hasil
-</button>
+<button onclick="cekHasil()">🔍 Cari Hasil</button>
 
 <div id="hasil"></div>
 
@@ -176,6 +154,7 @@ placeholder="Masukkan nama siswa">
 <script>
 
 const dataSiswa = {
+
     "Melinda Sari":"Desain Komunikasi Visual (DKV)",
     "Sesil Aprilia Nggrayini":"Desain Komunikasi Visual (DKV)",
     "Riska Amelia":"Desain Komunikasi Visual (DKV)",
@@ -196,20 +175,18 @@ const dataSiswa = {
     "Alfian Nurizki":"Teknik Sepeda Motor (TSM)",
     "Faiz Lutfi Pratama":"Teknik Sepeda Motor (TSM)",
     "Yogi Saputra":"Teknik Sepeda Motor (TSM)",
-    "M.Azril Ramadhan":"Teknik Sepeda Motor (TSM)",
+    "Azril Ramadhan":"Teknik Sepeda Motor (TSM)",
     "Alviano Wira Kusuma":"Teknik Sepeda Motor (TSM)",
-    "Aditya Putra Pratama":"Teknik Sepeda Motor (TSM)"
+    "Aditya Putra Pratama":"Teknik Sepeda Motor (TSM)",
+    "Indri Kirani Nurlita":"Teknik Sepeda Motor (TSM)"
+
 };
 
 function cekHasil(){
 
-    const keyword = document
-        .getElementById("nama")
-        .value
-        .trim()
-        .toLowerCase();
+    let keyword = document.getElementById("nama").value.trim().toLowerCase();
 
-    const hasil = document.getElementById("hasil");
+    let hasil = document.getElementById("hasil");
 
     if(keyword === ""){
         hasil.innerHTML = `
@@ -220,7 +197,6 @@ function cekHasil(){
     }
 
     let ditemukan = false;
-    let output = "";
 
     for(let nama in dataSiswa){
 
@@ -228,12 +204,10 @@ function cekHasil(){
 
             ditemukan = true;
 
-            output += `
+            hasil.innerHTML = `
             <div class="kartu">
 
-                <div class="sukses">
-                    🎉 SELAMAT 🎉
-                </div>
+                <div class="sukses">🎉 SELAMAT 🎉</div>
 
                 <p>
                 Anda dinyatakan <b>DITERIMA</b><br>
@@ -258,12 +232,11 @@ function cekHasil(){
                 <p class="status">DITERIMA</p>
 
             </div>`;
+            break;
         }
     }
 
-    if(ditemukan){
-        hasil.innerHTML = output;
-    }else{
+    if(!ditemukan){
         hasil.innerHTML = `
         <div class="error">
             <h3>❌ DATA TIDAK DITEMUKAN</h3>
@@ -272,9 +245,8 @@ function cekHasil(){
     }
 }
 
-document.getElementById("nama")
-.addEventListener("keypress", function(event){
-    if(event.key === "Enter"){
+document.getElementById("nama").addEventListener("keyup", function(e){
+    if(e.key === "Enter"){
         cekHasil();
     }
 });

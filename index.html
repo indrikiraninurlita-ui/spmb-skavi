@@ -3,33 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pengumuman SPMB SMK APVI Nunggal Maju Jaya 2026/2027</title>
+
+<title>Pengumuman SPMB SMK APVI NUNGGAL MAJU JAYA 2026/2027</title>
 
 <style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Segoe UI',sans-serif;
+    font-family:Segoe UI, sans-serif;
 }
 
 body{
-    min-height:100vh;
     background:linear-gradient(135deg,#0f4c81,#1e88e5,#42a5f5);
+    min-height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
-    padding:20px;
+    padding:15px;
 }
 
 .container{
     width:100%;
-    max-width:850px;
+    max-width:800px;
     background:#fff;
     border-radius:20px;
     padding:35px;
     text-align:center;
-    box-shadow:0 15px 35px rgba(0,0,0,.2);
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
 }
 
 .logo{
@@ -39,11 +40,14 @@ body{
 
 .judul{
     color:#0f4c81;
+    font-size:32px;
+    line-height:1.4;
     margin-bottom:10px;
 }
 
 .subjudul{
     color:#555;
+    font-size:18px;
     margin-bottom:20px;
 }
 
@@ -58,19 +62,19 @@ body{
 input{
     width:100%;
     padding:15px;
-    border:2px solid #ccc;
+    border:2px solid #ddd;
     border-radius:10px;
     font-size:16px;
 }
 
 button{
     width:100%;
-    margin-top:15px;
     padding:15px;
+    margin-top:15px;
     border:none;
     border-radius:10px;
     background:#1565c0;
-    color:#fff;
+    color:white;
     font-size:16px;
     font-weight:bold;
     cursor:pointer;
@@ -80,29 +84,33 @@ button:hover{
     background:#0d47a1;
 }
 
-#hasil{
-    margin-top:20px;
-}
-
 .kartu{
-    background:#fff;
+    margin-top:20px;
+    background:white;
     border-top:8px solid #4caf50;
     border-radius:15px;
     padding:25px;
-    box-shadow:0 5px 20px rgba(0,0,0,.15);
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
 }
 
-.error{
-    background:#ffebee;
-    color:#c62828;
-    padding:20px;
-    border-radius:10px;
+.sukses{
+    color:#2e7d32;
+    font-size:35px;
+    margin-bottom:15px;
 }
 
 .status{
     color:#2e7d32;
-    font-size:28px;
+    font-size:24px;
     font-weight:bold;
+}
+
+.error{
+    margin-top:20px;
+    background:#ffebee;
+    color:red;
+    padding:20px;
+    border-radius:10px;
 }
 
 .footer{
@@ -110,17 +118,33 @@ button:hover{
     color:#666;
     font-size:14px;
 }
+
+@media(max-width:600px){
+    .container{
+        padding:20px;
+    }
+
+    .judul{
+        font-size:24px;
+    }
+
+    .subjudul{
+        font-size:15px;
+    }
+}
 </style>
 </head>
 <body>
 
 <div class="container">
 
+<!-- Ganti dengan logo sekolah -->
 <img src="logosmk.png" class="logo" alt="Logo Sekolah">
 
 <h1 class="judul">
 PENGUMUMAN<br>
-SELEKSI PENERIMAAN MURID BARU (SPMB)
+SELEKSI PENERIMAAN<br>
+MURID BARU (SPMB)
 </h1>
 
 <h2 class="subjudul">
@@ -132,9 +156,14 @@ Tahun Pelajaran 2026/2027
 Masukkan nama siswa untuk melihat hasil pengumuman.
 </div>
 
-<input type="text" id="nama" placeholder="Masukkan Nama Siswa">
+<input
+type="text"
+id="nama"
+placeholder="Masukkan nama siswa">
 
-<button onclick="cekHasil()">🔍 Cari Hasil</button>
+<button onclick="cekHasil()">
+🔍 Cari Hasil
+</button>
 
 <div id="hasil"></div>
 
@@ -160,6 +189,7 @@ const dataSiswa = {
     "Revan Andrianto":"Teknik Sepeda Motor (TSM)",
     "Bagas Alfiyansyah":"Teknik Sepeda Motor (TSM)",
     "Riski Rahmadani":"Teknik Sepeda Motor (TSM)",
+    "Syahril Indriyansyah":"Teknik Sepeda Motor (TSM)",
     "Rizky Ramadhan":"Teknik Sepeda Motor (TSM)",
     "Revan Radittia":"Teknik Sepeda Motor (TSM)",
     "Ferdiansyah":"Teknik Sepeda Motor (TSM)",
@@ -167,13 +197,17 @@ const dataSiswa = {
     "Faiz Lutfi Pratama":"Teknik Sepeda Motor (TSM)",
     "Yogi Saputra":"Teknik Sepeda Motor (TSM)",
     "Alviano Wira Kusuma":"Teknik Sepeda Motor (TSM)",
-
-    "Indri Kirani Nurlita":"Teknik Sepeda Motor (TSM)"
+    "Aditya Putra Pratama":"Teknik Sepeda Motor (TSM)"
 };
 
 function cekHasil(){
 
-    const keyword = document.getElementById("nama").value.trim().toLowerCase();
+    const keyword = document
+        .getElementById("nama")
+        .value
+        .trim()
+        .toLowerCase();
+
     const hasil = document.getElementById("hasil");
 
     if(keyword === ""){
@@ -185,21 +219,22 @@ function cekHasil(){
     }
 
     let ditemukan = false;
+    let output = "";
 
-    for(const nama in dataSiswa){
+    for(let nama in dataSiswa){
 
         if(nama.toLowerCase().includes(keyword)){
 
             ditemukan = true;
 
-            hasil.innerHTML = `
+            output += `
             <div class="kartu">
 
-                <h1 style="color:#2e7d32;margin-bottom:15px;">
-                🎉 SELAMAT 🎉
-                </h1>
+                <div class="sukses">
+                    🎉 SELAMAT 🎉
+                </div>
 
-                <p style="font-size:18px;line-height:1.8;">
+                <p>
                 Anda dinyatakan <b>DITERIMA</b><br>
                 Seleksi Penerimaan Murid Baru (SPMB)<br>
                 SMK APVI NUNGGAL MAJU JAYA<br>
@@ -209,36 +244,36 @@ function cekHasil(){
                 <hr style="margin:20px 0;">
 
                 <p><b>Nama Siswa</b></p>
-                <p style="font-size:22px;">${nama}</p>
+                <p>${nama}</p>
 
                 <br>
 
                 <p><b>Jurusan</b></p>
-                <p style="font-size:20px;">${dataSiswa[nama]}</p>
+                <p>${dataSiswa[nama]}</p>
 
                 <br>
 
                 <p><b>Status</b></p>
                 <p class="status">DITERIMA</p>
 
-            </div>
-            `;
-            break;
+            </div>`;
         }
     }
 
-    if(!ditemukan){
+    if(ditemukan){
+        hasil.innerHTML = output;
+    }else{
         hasil.innerHTML = `
         <div class="error">
             <h3>❌ DATA TIDAK DITEMUKAN</h3>
-            <p>Nama yang Anda masukkan tidak terdaftar.</p>
-        </div>
-        `;
+            <p>Nama siswa tidak terdaftar.</p>
+        </div>`;
     }
 }
 
-document.getElementById("nama").addEventListener("keyup", function(e){
-    if(e.key === "Enter"){
+document.getElementById("nama")
+.addEventListener("keypress", function(event){
+    if(event.key === "Enter"){
         cekHasil();
     }
 });

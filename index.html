@@ -3,45 +3,76 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pengumuman SPMB 2026/2027</title>
+<title>Pengumuman SPMB SMK APVI Nunggal Maju Jaya 2026/2027</title>
 
 <style>
-body{
-    font-family: Arial, sans-serif;
-    background:#f4f7fb;
+*{
     margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:linear-gradient(135deg,#0f4c81,#1e88e5,#42a5f5);
+    display:flex;
+    justify-content:center;
+    align-items:center;
     padding:20px;
 }
 
 .container{
-    max-width:700px;
-    margin:auto;
-    background:white;
-    padding:30px;
-    border-radius:15px;
-    box-shadow:0 0 15px rgba(0,0,0,0.1);
+    width:100%;
+    max-width:850px;
+    background:#fff;
+    border-radius:20px;
+    padding:35px;
     text-align:center;
+    box-shadow:0 15px 35px rgba(0,0,0,.2);
 }
 
-h1{
+.logo{
+    width:120px;
+    margin-bottom:15px;
+}
+
+.judul{
+    color:#0f4c81;
+    margin-bottom:10px;
+}
+
+.subjudul{
+    color:#555;
+    margin-bottom:20px;
+}
+
+.info{
+    background:#e3f2fd;
     color:#0d47a1;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:20px;
 }
 
 input{
-    width:90%;
-    padding:12px;
-    margin-top:15px;
-    border:1px solid #ccc;
-    border-radius:8px;
+    width:100%;
+    padding:15px;
+    border:2px solid #ccc;
+    border-radius:10px;
+    font-size:16px;
 }
 
 button{
-    margin-top:10px;
-    padding:12px 20px;
+    width:100%;
+    margin-top:15px;
+    padding:15px;
     border:none;
-    border-radius:8px;
-    background:#1976d2;
-    color:white;
+    border-radius:10px;
+    background:#1565c0;
+    color:#fff;
+    font-size:16px;
+    font-weight:bold;
     cursor:pointer;
 }
 
@@ -49,26 +80,35 @@ button:hover{
     background:#0d47a1;
 }
 
-.kartu{
+#hasil{
     margin-top:20px;
-    border:2px solid #4caf50;
-    border-radius:10px;
-    padding:20px;
-    background:#f1fff1;
 }
 
-.status{
-    color:green;
-    font-size:22px;
-    font-weight:bold;
+.kartu{
+    background:#fff;
+    border-top:8px solid #4caf50;
+    border-radius:15px;
+    padding:25px;
+    box-shadow:0 5px 20px rgba(0,0,0,.15);
 }
 
 .error{
-    margin-top:20px;
     background:#ffebee;
-    color:red;
-    padding:15px;
+    color:#c62828;
+    padding:20px;
     border-radius:10px;
+}
+
+.status{
+    color:#2e7d32;
+    font-size:28px;
+    font-weight:bold;
+}
+
+.footer{
+    margin-top:20px;
+    color:#666;
+    font-size:14px;
 }
 </style>
 </head>
@@ -76,53 +116,77 @@ button:hover{
 
 <div class="container">
 
-<h1>PENGUMUMAN SPMB</h1>
+<img src="logosmk.png" class="logo" alt="Logo Sekolah">
 
-<h2>SMK APVI NUNGGAL MAJU JAYA</h2>
+<h1 class="judul">
+PENGUMUMAN<br>
+SELEKSI PENERIMAAN MURID BARU (SPMB)
+</h1>
 
-<p>Tahun Pelajaran 2026/2027</p>
+<h2 class="subjudul">
+SMK APVI NUNGGAL MAJU JAYA<br>
+Tahun Pelajaran 2026/2027
+</h2>
+
+<div class="info">
+Masukkan nama siswa untuk melihat hasil pengumuman.
+</div>
 
 <input type="text" id="nama" placeholder="Masukkan Nama Siswa">
 
-<br>
-
-<button onclick="cekHasil()">
-Cari Hasil
-</button>
+<button onclick="cekHasil()">🔍 Cari Hasil</button>
 
 <div id="hasil"></div>
+
+<div class="footer">
+© 2026 SMK APVI Nunggal Maju Jaya
+</div>
 
 </div>
 
 <script>
 
 const dataSiswa = {
-    "Indri Kirani Nurlita":"Teknik Sepeda Motor (TSM)",
     "Melinda Sari":"Desain Komunikasi Visual (DKV)",
+    "Sesil Aprilia Nggrayini":"Desain Komunikasi Visual (DKV)",
+    "Riska Amelia":"Desain Komunikasi Visual (DKV)",
+    "Nisa Azahra":"Desain Komunikasi Visual (DKV)",
+    "Feby Nurmala Sari":"Desain Komunikasi Visual (DKV)",
+    "Ester Rindu Asmarani":"Desain Komunikasi Visual (DKV)",
+    "Reni Fitri Ana":"Desain Komunikasi Visual (DKV)",
+    "Alvira Aprilia":"Desain Komunikasi Visual (DKV)",
+    "Denis Anju Maranata P":"Desain Komunikasi Visual (DKV)",
+
+    "Revan Andrianto":"Teknik Sepeda Motor (TSM)",
     "Bagas Alfiyansyah":"Teknik Sepeda Motor (TSM)",
-    "Rizky Ramadhan":"Teknik Sepeda Motor (TSM)"
+    "Riski Rahmadani":"Teknik Sepeda Motor (TSM)",
+    "Rizky Ramadhan":"Teknik Sepeda Motor (TSM)",
+    "Revan Radittia":"Teknik Sepeda Motor (TSM)",
+    "Ferdiansyah":"Teknik Sepeda Motor (TSM)",
+    "Alfian Nurizki":"Teknik Sepeda Motor (TSM)",
+    "Faiz Lutfi Pratama":"Teknik Sepeda Motor (TSM)",
+    "Yogi Saputra":"Teknik Sepeda Motor (TSM)",
+    "Alviano Wira Kusuma":"Teknik Sepeda Motor (TSM)",
+
+    "Indri Kirani Nurlita":"Teknik Sepeda Motor (TSM)"
 };
 
 function cekHasil(){
 
-    let keyword =
-    document.getElementById("nama")
-    .value
-    .trim()
-    .toLowerCase();
+    const keyword = document.getElementById("nama").value.trim().toLowerCase();
+    const hasil = document.getElementById("hasil");
 
-    let hasil =
-    document.getElementById("hasil");
-
-    if(keyword==""){
-        hasil.innerHTML =
-        "<div class='error'>Masukkan nama siswa terlebih dahulu.</div>";
+    if(keyword === ""){
+        hasil.innerHTML = `
+        <div class="error">
+            <h3>⚠ Masukkan nama siswa terlebih dahulu</h3>
+        </div>`;
         return;
     }
 
     let ditemukan = false;
 
-    for(let nama in dataSiswa){
+    for(const nama in dataSiswa){
 
         if(nama.toLowerCase().includes(keyword)){
 
@@ -130,43 +194,51 @@ function cekHasil(){
 
             hasil.innerHTML = `
             <div class="kartu">
-                <h2>🎉 SELAMAT 🎉</h2>
 
-                <p>
-                Anda dinyatakan diterima di
-                <b>SMK APVI NUNGGAL MAJU JAYA</b>
+                <h1 style="color:#2e7d32;margin-bottom:15px;">
+                🎉 SELAMAT 🎉
+                </h1>
+
+                <p style="font-size:18px;line-height:1.8;">
+                Anda dinyatakan <b>DITERIMA</b><br>
+                Seleksi Penerimaan Murid Baru (SPMB)<br>
+                SMK APVI NUNGGAL MAJU JAYA<br>
+                Tahun Pelajaran 2026/2027
                 </p>
 
-                <hr>
+                <hr style="margin:20px 0;">
 
-                <p><b>Nama:</b><br>${nama}</p>
+                <p><b>Nama Siswa</b></p>
+                <p style="font-size:22px;">${nama}</p>
 
-                <p><b>Jurusan:</b><br>${dataSiswa[nama]}</p>
+                <br>
 
-                <p class="status">
-                DITERIMA
-                </p>
+                <p><b>Jurusan</b></p>
+                <p style="font-size:20px;">${dataSiswa[nama]}</p>
+
+                <br>
+
+                <p><b>Status</b></p>
+                <p class="status">DITERIMA</p>
+
             </div>
             `;
-
             break;
         }
     }
 
     if(!ditemukan){
-
         hasil.innerHTML = `
         <div class="error">
-            Nama siswa tidak ditemukan.
+            <h3>❌ DATA TIDAK DITEMUKAN</h3>
+            <p>Nama yang Anda masukkan tidak terdaftar.</p>
         </div>
         `;
     }
 }
 
-document
-.getElementById("nama")
-.addEventListener("keyup", function(event){
-    if(event.key === "Enter"){
+document.getElementById("nama").addEventListener("keyup", function(e){
+    if(e.key === "Enter"){
         cekHasil();
     }
 });
